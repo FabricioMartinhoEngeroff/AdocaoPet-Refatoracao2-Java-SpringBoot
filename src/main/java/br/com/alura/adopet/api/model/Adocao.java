@@ -76,9 +76,6 @@ public class Adocao {
         return status;
     }
 
-    public void setStatus(StatusAdocao status) {
-        this.status = status;
-    }
 
     public String getJustificativaStatus() {
         return justificativaStatus;

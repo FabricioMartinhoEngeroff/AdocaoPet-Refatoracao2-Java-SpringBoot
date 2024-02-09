@@ -1,4 +1,6 @@
 package br.com.alura.adopet.api.dto;
 
-public record CadastrarPetDto(Long idAdoao, String name, String Telefone, String email) {
-}
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
+public record CadastrarPetDto(@NotNull Long id, @NotBlank String nome, @NotBlank String tipo, @NotNull Boolean adotado, @NotNull Long abrigoId) {}

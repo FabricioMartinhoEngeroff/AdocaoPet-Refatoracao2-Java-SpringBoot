@@ -2,8 +2,6 @@ package br.com.alura.adopet.api.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 
 import java.util.Objects;
 
@@ -15,8 +13,7 @@ public class Pet {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Enumerated(EnumType.STRING)
-    private TipoPet tipo;
+    private String tipo;
 
     private String nome;
 
@@ -28,7 +25,7 @@ public class Pet {
 
     private Float peso;
 
-    private Boolean adotado;
+    private boolean adotado;
 
     @ManyToOne
     @JsonBackReference("abrigo_pets")
@@ -38,6 +35,7 @@ public class Pet {
     @OneToOne(mappedBy = "pet")
     @JsonBackReference("adocao_pets")
     private Adocao adocao;
+
 
     @Override
     public boolean equals(Object o) {
@@ -60,12 +58,8 @@ public class Pet {
         this.id = id;
     }
 
-    public TipoPet getTipo() {
+    public String getTipo() {
         return tipo;
-    }
-
-    public void setTipo(TipoPet tipo) {
-        this.tipo = tipo;
     }
 
     public String getNome() {
@@ -108,11 +102,7 @@ public class Pet {
         this.peso = peso;
     }
 
-    public Boolean getAdotado() {
-        return adotado;
-    }
-
-    public void setAdotado(Boolean adotado) {
+    public void setAdotado(boolean adotado) {
         this.adotado = adotado;
     }
 
@@ -131,4 +121,16 @@ public class Pet {
     public void setAdocao(Adocao adocao) {
         this.adocao = adocao;
     }
+
+    public boolean isAdotado() {
+        return adotado;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+    public boolean getAdotado() {
+        return this.adotado;
+    }
 }
+
